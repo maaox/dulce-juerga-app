@@ -145,7 +145,7 @@ Los colores principales están definidos en `app/globals.css`:
 
 ### Actualizar Número de WhatsApp
 
-Busca y reemplaza `51957961418` en `app/page.tsx` con tu número (incluye código de país sin +).
+Busca y reemplaza `51927040637` en `app/page.tsx` con tu número (incluye código de país sin +).
 
 ### Cambiar Información del Evento
 
@@ -211,7 +211,7 @@ Este proyecto es privado y pertenece al evento "Dulce Juerga".
 
 ## 👥 Contacto
 
-Para adquirir entradas: [WhatsApp +51 957 961 418](https://wa.me/51957961418)
+Para adquirir entradas: [WhatsApp +51 927040637](https://wa.me/51927040637)
 
 ---
 

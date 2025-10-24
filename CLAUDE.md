@@ -126,7 +126,7 @@ The page follows a strategic conversion-optimized flow:
 
 All "Obtener Entrada" buttons link to:
 ```
-https://wa.me/51957961418?text=Deseo%20obtener%20la%20entrada%20JUERGON%20para%20Dulce%20Juerga%2C%20por%20favor
+https://wa.me/51927040637?text=Deseo%20obtener%20la%20entrada%20JUERGON%20para%20Dulce%20Juerga%2C%20por%20favor
 ```
 
 ## Important Notes
@@ -140,4 +140,4 @@ https://wa.me/51957961418?text=Deseo%20obtener%20la%20entrada%20JUERGON%20para%2
 - **Static Export**: No backend or database integration; purely client-side rendered static site
 - **Responsive**: Mobile-first design with md: breakpoints for desktop
 - **Event Date**: October 31, 2024 at 9:30 PM
-- **Contact**: WhatsApp 957961418
+- **Contact**: WhatsApp 927040637
