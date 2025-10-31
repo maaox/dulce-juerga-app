@@ -1,8 +1,8 @@
 import type { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { comparePassword } from './src/lib/auth';
+import { comparePassword } from '@/lib/auth';
 import prisma from './lib/prisma';
-import { loginSchema } from './src/lib/validations';
+import { loginSchema } from '@/lib/validations';
 
 export default {
   providers: [

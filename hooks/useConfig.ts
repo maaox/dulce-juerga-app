@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { DescuentoFranja } from '@/src/lib/utils/config';
+import { DescuentoFranja } from '@/lib/utils/config';
 
 export interface Config {
   id: string;

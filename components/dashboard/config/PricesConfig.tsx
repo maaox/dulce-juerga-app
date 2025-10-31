@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Config } from "@/src/hooks/useConfig";
+import { Config } from "@/hooks/useConfig";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

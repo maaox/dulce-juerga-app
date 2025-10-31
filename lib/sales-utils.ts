@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import prisma from '../../lib/prisma';
+import prisma from '@/lib/prisma';
 
 export function generateSaleCode(): string {
   const fecha = new Date();

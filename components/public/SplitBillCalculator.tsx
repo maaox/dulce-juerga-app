@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useCalculator } from "@/src/hooks/useCalculator";
+import { useCalculator } from "@/hooks/useCalculator";
 import { CalculatorItem } from "./CalculatorItem";
 import { Users, Share2, RefreshCw, Wallet } from "lucide-react";
-import { formatPrice } from "@/src/lib/utils/pricing";
+import { formatPrice } from "@/lib/utils/pricing";
 
 interface SplitBillCalculatorProps {
   open: boolean;

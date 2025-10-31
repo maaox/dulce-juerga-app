@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Product } from "@prisma/client";
-import { useProducts } from "@/src/hooks/useProducts";
+import { useProducts } from "@/hooks/useProducts";
 import {
   Dialog,
   DialogContent,

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Config } from "@/src/hooks/useConfig";
-import { DescuentoFranja } from "@/src/lib/utils/config";
+import { Config } from "@/hooks/useConfig";
+import { DescuentoFranja } from "@/lib/utils/config";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";

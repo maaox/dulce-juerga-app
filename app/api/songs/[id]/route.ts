@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
-import { deleteFromS3 } from '@/src/lib/s3';
+import { deleteFromS3 } from '@/lib/s3';
 
 export const dynamic = 'force-dynamic';
 

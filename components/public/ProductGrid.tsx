@@ -1,6 +1,6 @@
 "use client";
 
-import { PublicProduct } from "@/src/hooks/usePublicMenu";
+import { PublicProduct } from "@/hooks/usePublicMenu";
 import { ProductCardPublic } from "./ProductCardPublic";
 
 interface ProductGridProps {

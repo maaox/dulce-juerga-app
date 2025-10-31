@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Music, User, SkipForward, CheckCircle2 } from "lucide-react";
-import { useSongs } from "@/src/hooks/useSongs";
+import { useSongs } from "@/hooks/useSongs";
 
 interface NowPlayingProps {
   song: Song & { user?: { name: string } | null };

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { UseCartReturn } from "@/src/hooks/useCart";
+import { UseCartReturn } from "@/hooks/useCart";
 import {
   Banknote,
   Smartphone,

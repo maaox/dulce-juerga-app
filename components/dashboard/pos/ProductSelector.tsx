@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { Product } from "@prisma/client";
-import { useProducts } from "@/src/hooks/useProducts";
+import { useProducts } from "@/hooks/useProducts";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Search, Plus, AlertTriangle } from "lucide-react";
 import Image from "next/image";
-import { UseCartReturn } from "@/src/hooks/useCart";
+import { UseCartReturn } from "@/hooks/useCart";
 import {
   Select,
   SelectContent,

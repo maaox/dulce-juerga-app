@@ -15,7 +15,7 @@ import {
   Crown,
   Zap,
 } from "lucide-react";
-import { useSongs } from "@/src/hooks/useSongs";
+import { useSongs } from "@/hooks/useSongs";
 
 interface PublicQueueProps {
   libres: Song[];

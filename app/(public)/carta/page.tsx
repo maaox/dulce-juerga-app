@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { usePublicMenu } from "@/src/hooks/usePublicMenu";
-import { useCalculator } from "@/src/hooks/useCalculator";
+import { usePublicMenu } from "@/hooks/usePublicMenu";
+import { useCalculator } from "@/hooks/useCalculator";
 import { Button } from "@/components/ui/button";
 import { Calculator } from "lucide-react";
 import { DiscountBanner } from "@/components/public/DiscountBanner";

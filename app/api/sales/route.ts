@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '../../../auth';
-import prisma from '../../../lib/prisma';
-import { saleSchema } from '../../../src/lib/validations';
-import { generateSaleCode, validateStock } from '../../../src/lib/sales-utils';
+import { auth } from '@/auth';
+import prisma from '@/lib/prisma';
+import { saleSchema } from '@/lib/validations';
+import { generateSaleCode, validateStock } from '@/lib/sales-utils';
 
 export const dynamic = 'force-dynamic';
 

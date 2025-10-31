@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
-import { ensureConfigExists } from '@/src/lib/utils/config';
-import { configSchema } from '@/src/lib/validations/config';
+import { ensureConfigExists } from '@/lib/utils/config';
+import { configSchema } from '@/lib/validations/config';
 
 export const dynamic = 'force-dynamic';
 

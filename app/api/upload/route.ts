@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '../../../auth';
-import { uploadToS3 } from '../../../src/lib/s3';
+import { auth } from '@/auth';
+import { uploadToS3 } from '@/lib/s3';
 
 export const dynamic = 'force-dynamic';
 

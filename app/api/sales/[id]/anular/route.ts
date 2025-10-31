@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '../../../../../auth';
-import prisma from '../../../../../lib/prisma';
-import { cancelSaleSchema } from '../../../../../src/lib/validations';
+import { auth } from '@/auth';
+import prisma from '@/lib/prisma';
+import { cancelSaleSchema } from '@/lib/validations';
 
 export const dynamic = 'force-dynamic';
 

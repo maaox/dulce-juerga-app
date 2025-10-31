@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { ensureConfigExists, getCurrentDiscount, DescuentoFranja } from '@/src/lib/utils/config';
+import { ensureConfigExists, getCurrentDiscount, DescuentoFranja } from '@/lib/utils/config';
 
 export async function GET(request: NextRequest) {
   try {

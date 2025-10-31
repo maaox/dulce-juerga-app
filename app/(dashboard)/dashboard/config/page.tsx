@@ -1,6 +1,6 @@
 "use client";
 
-import { useConfig } from "@/src/hooks/useConfig";
+import { useConfig } from "@/hooks/useConfig";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";

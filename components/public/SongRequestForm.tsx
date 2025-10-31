@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useSongs } from "@/src/hooks/useSongs";
+import { useSongs } from "@/hooks/useSongs";
 import { Send } from "lucide-react";
 
 interface SongRequestFormProps {

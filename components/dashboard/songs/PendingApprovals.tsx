@@ -15,7 +15,7 @@ import {
   Heart,
   Maximize2,
 } from "lucide-react";
-import { useSongs } from "@/src/hooks/useSongs";
+import { useSongs } from "@/hooks/useSongs";
 import Image from "next/image";
 import {
   Dialog,

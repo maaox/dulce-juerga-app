@@ -16,7 +16,7 @@ import {
   Trash2,
   Image as ImageIcon,
 } from "lucide-react";
-import { useSongs } from "@/src/hooks/useSongs";
+import { useSongs } from "@/hooks/useSongs";
 import Image from "next/image";
 
 interface SongCardProps {

@@ -1,9 +1,9 @@
 "use client";
 
-import { CalculatorItem as CalculatorItemType } from "@/src/hooks/useCalculator";
+import { CalculatorItem as CalculatorItemType } from "@/hooks/useCalculator";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, X } from "lucide-react";
-import { formatPrice } from "@/src/lib/utils/pricing";
+import { formatPrice } from "@/lib/utils/pricing";
 
 interface CalculatorItemProps {
   item: CalculatorItemType;

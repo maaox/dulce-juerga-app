@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
-import { uploadToS3 } from '@/src/lib/s3';
-import { ensureConfigExists } from '@/src/lib/utils/config';
+import { uploadToS3 } from '@/lib/s3';
+import { ensureConfigExists } from '@/lib/utils/config';
 
 // POST /api/songs/vip - Crear solicitud VIP (pública)
 export async function POST(request: NextRequest) {

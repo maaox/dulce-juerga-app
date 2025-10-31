@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { ensureConfigExists } from '@/src/lib/utils/config';
+import { ensureConfigExists } from '@/lib/utils/config';
 
 // GET /api/public/config/descuentos
 // Public endpoint to get discount configuration

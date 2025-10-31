@@ -13,8 +13,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { UseCartReturn } from "@/src/hooks/useCart";
-import { useSales } from "@/src/hooks/useSales";
+import { UseCartReturn } from "@/hooks/useCart";
+import { useSales } from "@/hooks/useSales";
 import { Banknote, ArrowRightLeft } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 

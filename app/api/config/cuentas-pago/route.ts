@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
-import { ensureConfigExists } from '@/src/lib/utils/config';
-import { uploadToS3, deleteFromS3 } from '@/src/lib/s3';
+import { ensureConfigExists } from '@/lib/utils/config';
+import { uploadToS3, deleteFromS3 } from '@/lib/s3';
 
 export const dynamic = 'force-dynamic';
 

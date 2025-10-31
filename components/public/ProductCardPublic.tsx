@@ -1,13 +1,13 @@
 "use client";
 
-import { PublicProduct } from "@/src/hooks/usePublicMenu";
+import { PublicProduct } from "@/hooks/usePublicMenu";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Package } from "lucide-react";
 import Image from "next/image";
-import { formatPrice } from "@/src/lib/utils/pricing";
-import { getCategoryLabel } from "@/src/lib/utils/categories";
+import { formatPrice } from "@/lib/utils/pricing";
+import { getCategoryLabel } from "@/lib/utils/categories";
 
 interface ProductCardPublicProps {
   producto: PublicProduct;

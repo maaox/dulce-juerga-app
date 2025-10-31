@@ -1,6 +1,6 @@
 "use client";
 
-import { useDashboardStats } from "@/src/hooks/useDashboardStats";
+import { useDashboardStats } from "@/hooks/useDashboardStats";
 import { KPICard } from "@/components/dashboard/stats/KPICard";
 import { SalesChart } from "@/components/dashboard/stats/SalesChart";
 import { TopProductsTable } from "@/components/dashboard/stats/TopProductsTable";

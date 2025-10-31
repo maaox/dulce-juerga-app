@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ProductSelector } from "@/components/dashboard/pos/ProductSelector";
 import { SaleCart } from "@/components/dashboard/pos/SaleCart";
 import { PaymentMethodSelector } from "@/components/dashboard/pos/PaymentMethodSelector";
-import { useCart } from "@/src/hooks/useCart";
+import { useCart } from "@/hooks/useCart";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ShoppingCart, History } from "lucide-react";

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { ensureConfigExists } from '@/src/lib/utils/config';
+import { ensureConfigExists } from '@/lib/utils/config';
 
 // GET /api/config/precios-canciones
 // Público - obtiene precios de DJ requests

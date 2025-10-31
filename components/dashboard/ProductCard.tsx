@@ -18,8 +18,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useProducts } from "@/src/hooks/useProducts";
-import { getCategoryLabel } from "@/src/lib/utils/categories";
+import { useProducts } from "@/hooks/useProducts";
+import { getCategoryLabel } from "@/lib/utils/categories";
 
 interface ProductCardProps {
   product: Product;

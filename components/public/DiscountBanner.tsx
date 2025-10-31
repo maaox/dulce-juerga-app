@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Descuento } from "@/src/hooks/usePublicMenu";
-import { formatTimeRemaining } from "@/src/lib/utils/pricing";
+import { Descuento } from "@/hooks/usePublicMenu";
+import { formatTimeRemaining } from "@/lib/utils/pricing";
 import { Clock, Flame } from "lucide-react";
 
 interface DiscountBannerProps {
