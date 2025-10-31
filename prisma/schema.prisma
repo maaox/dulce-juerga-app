@@ -1,0 +1,261 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum Role {
+  ADMIN
+  BARTENDER
+  CAJERO
+}
+
+enum Categoria {
+  CERVEZA
+  TRAGO
+  SHOT
+  SIN_ALCOHOL
+  OTRO
+}
+
+enum UnidadMedida {
+  UNIDAD
+  BOTELLA
+  LITRO
+  ML
+}
+
+enum MetodoPago {
+  EFECTIVO
+  YAPE
+  PLIN
+  TARJETA
+  PULSERA
+}
+
+enum EstadoVenta {
+  COMPLETADA
+  PENDIENTE
+  ANULADA
+}
+
+enum TipoCancion {
+  LIBRE
+  PRIORITARIA
+  VIP
+}
+
+enum EstadoCancion {
+  PENDIENTE
+  EN_COLA
+  REPRODUCIENDO
+  REPRODUCIDA
+  RECHAZADA
+}
+
+// ============================================
+// MODELOS
+// ============================================
+
+model User {
+  id        String   @id @default(cuid())
+  nombre    String
+  email     String   @unique
+  password  String
+  rol       Role     @default(BARTENDER)
+  barra     String?  // "barra_1", "barra_2", null
+  activo    Boolean  @default(true)
+  avatar    String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relaciones
+  ventas    Sale[]
+  canciones Song[]
+
+  @@index([email])
+  @@index([activo])
+  @@map("users")
+}
+
+model Product {
+  id              String        @id @default(cuid())
+  nombre          String
+  descripcion     String?       @db.Text
+  categoria       Categoria
+  precioBase      Float         @map("precio_base")
+  costoUnitario   Float         @map("costo_unitario")
+  imagenUrl       String?       @map("imagen_url")
+  imagenKey       String?       @map("imagen_key") // S3 key para eliminar
+  stockInicial    Int           @map("stock_inicial")
+  stockActual     Int           @map("stock_actual")
+  unidadMedida    UnidadMedida  @default(UNIDAD) @map("unidad_medida")
+  disponible      Boolean       @default(true)
+  badges          String?       @db.Text // JSON array: ["popular", "nuevo"]
+  opciones        String?       @db.Text // JSON: [{nombre, precioExtra}]
+  activo          Boolean       @default(true)
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  // Relaciones
+  saleItems       SaleItem[]
+
+  @@index([categoria, disponible])
+  @@index([activo])
+  @@fulltext([nombre])
+  @@map("products")
+}
+
+model Sale {
+  id                   String         @id @default(cuid())
+  codigo               String         @unique
+
+  // Usuario y barra
+  userId               String         @map("user_id")
+  user                 User           @relation(fields: [userId], references: [id])
+  barra                String         // "barra_1" | "barra_2"
+
+  // Items
+  items                SaleItem[]
+
+  // Cálculos
+  subtotal             Float
+  descuentoPorcentaje  Float          @default(0) @map("descuento_porcentaje")
+  descuentoMonto       Float          @default(0) @map("descuento_monto")
+  total                Float
+
+  // Método de pago
+  metodoPago           MetodoPago     @map("metodo_pago")
+
+  // Detalles de pago (JSON)
+  pagoDetalles         String?        @db.Text @map("pago_detalles")
+
+  // Estado
+  estado               EstadoVenta    @default(COMPLETADA)
+  anuladaPor           String?        @map("anulada_por")
+  razonAnulacion       String?        @db.Text @map("razon_anulacion")
+  fechaAnulacion       DateTime?      @map("fecha_anulacion")
+
+  // Metadata
+  notas                String?        @db.Text
+  ipCliente            String?        @map("ip_cliente")
+  deviceInfo           String?        @map("device_info")
+
+  createdAt            DateTime       @default(now()) @map("created_at")
+  updatedAt            DateTime       @updatedAt @map("updated_at")
+
+  @@index([userId, createdAt])
+  @@index([barra, createdAt])
+  @@index([metodoPago])
+  @@index([estado])
+  @@index([createdAt])
+  @@map("sales")
+}
+
+model SaleItem {
+  id              String   @id @default(cuid())
+  saleId          String   @map("sale_id")
+  sale            Sale     @relation(fields: [saleId], references: [id], onDelete: Cascade)
+
+  productId       String   @map("product_id")
+  product         Product  @relation(fields: [productId], references: [id])
+
+  nombreProducto  String   @map("nombre_producto") // Backup
+  cantidad        Int
+  precioUnitario  Float    @map("precio_unitario")
+  subtotal        Float
+
+  @@index([saleId])
+  @@index([productId])
+  @@map("sale_items")
+}
+
+model Song {
+  id                  String         @id @default(cuid())
+  titulo              String
+  artista             String
+  tipo                TipoCancion
+
+  // Dedicatoria (solo VIP)
+  dedicatoriaDe       String?        @map("dedicatoria_de")
+  dedicatoriaPara     String?        @map("dedicatoria_para")
+  dedicatoriaMensaje  String?        @db.Text @map("dedicatoria_mensaje")
+
+  // Pago (prioritaria y VIP)
+  pagado              Boolean        @default(false)
+  monto               Float          @default(0)
+  comprobanteUrl      String?        @map("comprobante_url")
+  comprobanteKey      String?        @map("comprobante_key")
+
+  // Usuario (si está logueado)
+  userId              String?        @map("user_id")
+  user                User?          @relation(fields: [userId], references: [id])
+
+  // Solicitudes anónimas (libres)
+  solicitanteNombre   String         @default("Anónimo") @map("solicitante_nombre")
+
+  // Estado
+  estado              EstadoCancion  @default(PENDIENTE)
+
+  // Votos (solo libres)
+  votos               Int            @default(0)
+  votosIps            String?        @db.Text // JSON array de IPs/device IDs
+
+  // Orden
+  orden               Int            @default(0)
+
+  // Timestamps
+  fechaReproduccion   DateTime?      @map("fecha_reproduccion")
+  tiempoEsperaMinutos Int?           @map("tiempo_espera_minutos")
+
+  // Notas
+  notasDj             String?        @db.Text @map("notas_dj")
+  ipSolicitante       String?        @map("ip_solicitante")
+
+  createdAt           DateTime       @default(now()) @map("created_at")
+  updatedAt           DateTime       @updatedAt @map("updated_at")
+
+  @@index([tipo, estado, orden])
+  @@index([estado, createdAt])
+  @@map("songs")
+}
+
+model Config {
+  id        String   @id @default("singleton") // Solo 1 registro
+
+  // Descuentos por hora
+  descuentosEnabled Boolean  @default(true) @map("descuentos_enabled")
+  descuentos        String?  @db.Text // JSON Array de franjas
+
+  // Precios DJ Requests
+  precioLibre       Float    @default(0) @map("precio_libre")
+  precioPrioritaria Float    @default(5) @map("precio_prioritaria")
+  precioVip         Float    @default(8) @map("precio_vip")
+
+  // Cuentas de pago
+  cuentasPago       String?  @db.Text @map("cuentas_pago") // JSON
+
+  // Datos del evento
+  eventoNombre      String   @default("Halloween Party 2024") @map("evento_nombre")
+  eventoFecha       DateTime @map("evento_fecha")
+  eventoHoraInicio  String   @default("21:00") @map("evento_hora_inicio")
+  eventoHoraFin     String   @default("04:00") @map("evento_hora_fin")
+  eventoAforoMaximo Int      @default(150) @map("evento_aforo_maximo")
+  eventoEstado      String   @default("preparacion") @map("evento_estado")
+
+  // Notificaciones
+  emailNotificaciones String? @map("email_notificaciones")
+  whatsappNotificaciones String? @map("whatsapp_notificaciones")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("config")
+}

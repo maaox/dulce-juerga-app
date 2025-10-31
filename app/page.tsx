@@ -14,10 +14,12 @@ import {
   Trophy,
   Award,
   PartyPopper,
+  LogIn,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 export default function Home() {
   const scrollToSection = (id: string) => {
@@ -39,6 +41,14 @@ export default function Home() {
           backgroundAttachment: "scroll",
         }}
       >
+        {/* Botón de inicio */}
+        <Link href="/dashboard" className="fixed top-4 right-4 z-50">
+          <Button className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 flex items-center" variant={"ghost"}>
+            <LogIn className="w-6 h-6 mr-2" />
+            Dashboard
+          </Button>
+        </Link>
+
         {/* Overlay oscuro con gradiente rojo */}
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/40 via-black/60 to-black/70" />
 
