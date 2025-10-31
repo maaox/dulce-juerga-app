@@ -44,12 +44,17 @@ export const stockUpdateSchema = z.object({
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 
-export const imageSchema = z.object({
-  file: z
-    .instanceof(File)
-    .refine(file => file.size <= MAX_FILE_SIZE, 'Máximo 5MB')
-    .refine(file => ACCEPTED_IMAGE_TYPES.includes(file.type), 'Solo JPG, PNG, WEBP'),
-});
+// Image schema - only use on client side
+export const imageSchema = typeof File !== 'undefined'
+  ? z.object({
+      file: z
+        .instanceof(File)
+        .refine(file => file.size <= MAX_FILE_SIZE, 'Máximo 5MB')
+        .refine(file => ACCEPTED_IMAGE_TYPES.includes(file.type), 'Solo JPG, PNG, WEBP'),
+    })
+  : z.object({
+      file: z.any(),
+    });
 
 // ============================================
 // SALE VALIDATIONS
